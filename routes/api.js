@@ -372,6 +372,27 @@ router.get('/randomquote', async (req, res, next) => {
 })
 
 
+router.get('/nsfw/ahegao', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
+
+       fetch(encodeURI(`https://raw.githubusercontent.com/jepribarus/JB-Api/main/nsfw/ahegao.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+        var result = data[Math.floor(Math.random() * data.length)];
+             res.json({
+             	creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+})
+
 router.get('/infonpm', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
@@ -393,6 +414,27 @@ router.get('/infonpm', async (req, res, next) => {
          })
          .catch(e => {
          	res.sendFile(error)
+})
+})
+
+router.get('/nsfw/cum', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if (apikeyInput != '${key}')  return res.json(loghandler.invalidKey)
+
+       fetch(encodeURI(`https://raw.githubusercontent.com/jepribarus/JB-Api/main/nsfw/cum.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+        var result = data[Math.floor(Math.random() * data.length)];
+             res.json({
+             	creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
 })
 })
 
@@ -439,7 +481,7 @@ router.get('/anime/kusonime', async (req, res, next) => {
 	    search = req.query.search
             
 	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
+	if(apikeyInput != 'SenkuApi') return res.json(loghandler.invalidKey)
 	if(!search) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter search"})
        fetch(encodeURI(`https://docs-api-zahirrr.herokuapp.com/api/kusonime?search=${search}`))
         .then(response => response.json())
