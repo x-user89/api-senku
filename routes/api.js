@@ -6,12 +6,12 @@ var db = require(__path + '/database/db');
 try {
 var kuhong = db.get('ojan'); // jan diubah
 } catch (e) {
-	console.log('WELCOME TO SENKU API!') // boleh diubah
+	console.log('WELCOME TO IRFAK-IT API!') // boleh diubah
 }
 
-var creatorList = ['Senku']; // Nama Lu Ngab
+var creatorList = ['IRFAK-IT']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
-var key = 'SenkuApi' // Apikey Lu Ngab
+var key = 'rondokan' // Apikey Lu Ngab
 
 // Required Modules :
 var ffmpeg = require('fluent-ffmpeg');
