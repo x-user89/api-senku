@@ -6,12 +6,12 @@ var db = require(__path + '/database/db');
 try {
 var kuhong = db.get('ojan'); // jan diubah
 } catch (e) {
-	console.log('WELCOME TO IRFAK-IT API!') // boleh diubah
+	console.log('WELCOME TO SENKU API!') // boleh diubah
 }
 
-var creatorList = ['IRFAK-IT']; // Nama Lu Ngab
+var creatorList = ['Senku']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
-var key = 'rondokan' // Apikey Lu Ngab
+var key = 'SenkuApi' // Apikey Lu Ngab
 
 // Required Modules :
 var ffmpeg = require('fluent-ffmpeg');
@@ -372,27 +372,6 @@ router.get('/randomquote', async (req, res, next) => {
 })
 
 
-router.get('/nsfw/ahegao', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if (apikeyInput != 'Alphabot')  return res.json(loghandler.invalidKey)
-
-       fetch(encodeURI(`https://raw.githubusercontent.com/jepribarus/JB-Api/main/nsfw/ahegao.json`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-        var result = data[Math.floor(Math.random() * data.length)];
-             res.json({
-             	creator : `${creator}`,
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-})
-
 router.get('/infonpm', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             query = req.query.query
@@ -414,27 +393,6 @@ router.get('/infonpm', async (req, res, next) => {
          })
          .catch(e => {
          	res.sendFile(error)
-})
-})
-
-router.get('/nsfw/cum', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if (apikeyInput != '${key}')  return res.json(loghandler.invalidKey)
-
-       fetch(encodeURI(`https://raw.githubusercontent.com/jepribarus/JB-Api/main/nsfw/cum.json`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-        var result = data[Math.floor(Math.random() * data.length)];
-             res.json({
-             	creator : `${creator}`,
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
 })
 })
 
@@ -476,25 +434,6 @@ axios.get('https://jadwalnonton.com/now-playing')
   })
 })
 
-router.get('/anime/kusonime', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    search = req.query.search
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput != 'SenkuApi') return res.json(loghandler.invalidKey)
-	if(!search) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter search"})
-       fetch(encodeURI(`https://docs-api-zahirrr.herokuapp.com/api/kusonime?search=${search}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-})
 
 router.get('/short/tiny', async (req, res, next) => {
     var apikeyInput = req.query.apikey,
@@ -675,26 +614,6 @@ router.get('/nulis2', async (req, res, next) => {
       console.log(e);
 	 res.json(loghandler.erorr)
            }
-})
-
-router.get('/manga', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    search = req.query.search
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput != 'Alphabot') return res.json(loghandler.invalidKey)
-	if(!search) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter search"})
-       fetch(encodeURI(`https://docs-api-zahirrr.herokuapp.com/api/manga?keyword=${search}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 result
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
 })
 
 router.get('/textmaker', async (req, res, next) => {
